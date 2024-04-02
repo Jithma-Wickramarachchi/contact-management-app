@@ -1,5 +1,8 @@
 //@desc Get all contacts
 //@route GET /api/contacts
+
+const errorHandler = require("../middleware/error-handler")
+
 //@access public
 const getContacts = (req, res) => {
     res.status(200).json({
@@ -21,6 +24,11 @@ const getContactById = (req, res) => {
 //@access public
 const createContacts = (req, res) => {
     console.log("The request body : ", req.body)
+    const {name, email, contact} = req.body;
+    if(!name || !email || !contact){
+        res.status(400);
+        throw new Error("All fields are mandatory");
+    }
     res.status(201).json({
         "message": "Save a contact"
     })
