@@ -20,6 +20,7 @@ const getContactById = (req, res) => {
 //@route POST /api/contacts
 //@access public
 const createContacts = (req, res) => {
+    console.log("The request body : ", req.body)
     res.status(201).json({
         "message": "Save a contact"
     })
